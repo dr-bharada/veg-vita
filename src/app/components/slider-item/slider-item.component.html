@@ -1,0 +1,30 @@
+<ng-container>
+    <ul [attr.actiIndex]="activeSlideIndex">
+        <!-- <ng-container *ngFor="let item of sliderItems;let sliderIndex=index"> -->
+             @for (item of sliderItems; track item?.id;) {
+            <li class="slider-item active" [class.active]="activeSlideIndex === $index">
+                <div class="slider-bg">
+                    <img [src]="item.imageSrc" width="1880" height="950" alt="" class="img-cover">
+                </div>
+                <p class="label-2 section-subtitle slider-reveal">{{ item.subtitle }}</p>
+                <h1 class="display-1 hero-title slider-reveal">
+                    {{ item.title }}
+                </h1>
+                <p class="body-2 hero-text slider-reveal">
+                    {{ item.description }}
+                </p>
+                <a href="#" class="btn btn-primary slider-reveal">
+                    <span class="text text-1">{{ item.buttonText }}</span>
+                    <span class="text text-2" aria-hidden="true">{{ item.buttonText }}</span>
+                </a>
+            </li>}
+    </ul>
+</ng-container>
+<!--  -->
+<button (click)="prevSlide()" class="slider-btn prev" aria-label="slide to previous" data-prev-btn>
+    <ion-icon name="chevron-back"></ion-icon>
+</button>
+<!--  -->
+<button (click)="nextSlide()" class="slider-btn next" aria-label="slide to next" data-next-btn>
+    <ion-icon name="chevron-forward"></ion-icon>
+</button>
